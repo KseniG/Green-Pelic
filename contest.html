@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конкурс «Зелёный город» | Фестиваль Зелёный Пеликан</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 300;
+            background-color: #F5F5F5;
+            color: #575656;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        header {
+            background-color: white;
+            border-bottom: 1px solid rgba(87,86,86,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background-color: rgba(255,255,255,0.95);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #575656;
+        }
+        .logo a:hover { color: #FFE17D; }
+        .logo span { font-weight: 500; color: #FFE17D; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #575656;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #FFE17D;
+            border-bottom-color: #FFE17D;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #FFE17D;
+            color: #575656;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.25s;
+        }
+        .btn:hover {
+            background-color: #e6cc6e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        .hero-contest {
+            background: linear-gradient(100deg, #ffffff 0%, #FCF8E8 100%);
+            padding: 70px 0;
+            text-align: center;
+        }
+        .hero-contest h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            color: #575656;
+        }
+        .hero-contest h1 span {
+            color: #FFE17D;
+            font-weight: 400;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #FFE17D;
+        }
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(87,86,86,0.08);
+        }
+        .grid-2, .grid-3 {
+            display: grid;
+            gap: 40px;
+        }
+        .grid-2 { grid-template-columns: repeat(2,1fr); }
+        .grid-3 { grid-template-columns: repeat(3,1fr); }
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.03);
+            transition: 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 18px 28px -12px rgba(0,0,0,0.08); }
+        .card-icon {
+            font-size: 2.2rem;
+            color: #FFE17D;
+            margin-bottom: 18px;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0 0;
+        }
+        .badge {
+            background: #F5F5F5;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+        .footer {
+            background: white;
+            padding: 50px 0 30px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 { font-weight: 400; margin-bottom: 16px; }
+        .footer-col p, .footer-col a { font-size: 0.9rem; color: #7a7979; text-decoration: none; line-height: 1.7; }
+        .footer-col a:hover { color: #FFE17D; }
+        .copyright { text-align: center; font-size: 0.8rem; padding-top: 30px; border-top: 1px solid rgba(87,86,86,0.1); }
+        @media (max-width: 900px) {
+            .container { padding: 0 24px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .hero-contest h1 { font-size: 2.2rem; }
+            .header-inner { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo"><a href="index.html">ЗЕЛЁНЫЙ <span>ПЕЛИКАН</span></a></div>
+                <div class="nav-links">
+                    <a href="index.html">Фестиваль</a>
+                    <a href="contest.html" class="active">Конкурс «Зелёный город»</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-contest">
+        <div class="container">
+            <h1>Конкурс молодёжных проектов <br><span>«Зелёный город»</span></h1>
+            <p style="font-size: 1.2rem; margin: 20px 0 12px;">в рамках фестиваля «Зелёный Пеликан»</p>
+            <a href="#apply" class="btn" style="margin-top: 8px;">Подать заявку <i class="fas fa-paper-plane"></i></a>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">О конкурсе</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <i class="fas fa-seedling card-icon"></i>
+                    <h3>Цель</h3>
+                    <p>Выявление и поддержка молодёжных инициатив, направленных на улучшение городской среды, внедрение экологичных решений и развитие «зелёных» технологий в Санкт-Петербурге.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-microchip card-icon"></i>
+                    <h3>Инновационный фокус</h3>
+                    <p>Приветствуются проекты с использованием LLM, дистанционного зондирования, фотограмметрии и идей природосообразной архитектуры.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #FFE17D08;">
+        <div class="container">
+            <h2 class="section-title">Номинации и направления</h2>
+            <div class="grid-3">
+                <div class="card"><i class="fas fa-city card-icon"></i><h3>Ландшафтный дизайн & озеленение</h3><p>Проекты городских пространств, умное озеленение, вертикальные сады.</p></div>
+                <div class="card"><i class="fas fa-recycle card-icon"></i><h3>Переработка отходов & циклическая экономика</h3><p>Вторичное сырьё, эко-материалы, креативные решения для zero waste.</p></div>
+                <div class="card"><i class="fas fa-robot card-icon"></i><h3>Экотехническое проектирование</h3><p>Прототипы, био-технические модели, энергосберегающие технологии.</p></div>
+                <div class="card"><i class="fas fa-chart-line card-icon"></i><h3>Исследования городской среды</h3><p>Применение LLM, анализ данных, фотограмметрия для экологического мониторинга.</p></div>
+                <div class="card"><i class="fas fa-school card-icon"></i><h3>Образовательные экопроекты</h3><p>Просветительские кампании, экологические тропы, приложения и игры.</p></div>
+                <div class="card"><i class="fas fa-tree card-icon"></i><h3>Природосообразная архитектура</h3><p>Экодома, зелёные крыши, интеграция природы в урбанистику.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Участники</h2>
+            <div class="card" style="margin-bottom: 20px;">
+                <p>К участию приглашаются <strong>школьники, студенты, молодые специалисты, аспиранты, преподаватели и творческие команды</strong> в возрасте от 14 до 35 лет (индивидуально или в составе коллектива до 5 человек). Представители академических и профессиональных сообществ также могут представить свои проекты.</p>
+            </div>
+            <div class="badge-list">
+                <span class="badge"><i class="fas fa-user-graduate"></i> Студенты</span>
+                <span class="badge"><i class="fas fa-chalkboard-user"></i> Преподаватели</span>
+                <span class="badge"><i class="fas fa-school"></i> Школьники</span>
+                <span class="badge"><i class="fas fa-briefcase"></i> Профильные специалисты</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Требования к проектам</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <i class="fas fa-file-alt card-icon"></i>
+                    <h3>Формат подачи</h3>
+                    <p>Презентация (PDF / PPT) до 15 слайдов или видеоролик до 3 минут. Описание идеи, актуальность, экологический эффект, новизна.</p>
+                    <p style="margin-top: 12px;"><i class="fas fa-calendar-week"></i> Приём заявок: до <strong>1 мая 2026 года</strong> (включительно).</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-lightbulb card-icon"></i>
+                    <h3>Критерии оценки</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Актуальность и экологическая значимость</li>
+                        <li>Инновационность и междисциплинарность</li>
+                        <li>Проработанность и реализуемость</li>
+                        <li>Вклад в устойчивое развитие города</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" style="background: #FFE17D10;">
+        <div class="container">
+            <h2 class="section-title">Порядок и сроки участия</h2>
+            <div class="timeline" style="display: flex; flex-direction: column; gap: 16px;">
+                <div style="background: white; padding: 20px; border-radius: 20px;"><strong>1 этап</strong> – подача заявки и проектных материалов на e-mail: <strong>terraherz-spb@yandex.ru</strong> с пометкой «Конкурс Зелёный город». Срок до 1 мая 2026.</div>
+                <div style="background: white; padding: 20px; border-radius: 20px;"><strong>2 этап</strong> – экспертная оценка заочного этапа (1–15 мая). Финалисты получают приглашение на очную защиту.</div>
+                <div style="background: white; padding: 20px; border-radius: 20px;"><strong>3 этап</strong> – финал и публичная презентация проектов 26–27 мая 2026 в Открытом кампусе Герценовского университета.</div>
+            </div>
+            <div class="card" style="margin-top: 30px; text-align: center;">
+                <i class="fas fa-trophy" style="font-size: 2rem; color: #FFE17D;"></i>
+                <h3 style="margin: 12px 0;">Награждение победителей</h3>
+                <p>Дипломы, ценные призы от партнёров, сертификаты. Лучшие проекты получат рекомендации к реализации на городских пространствах и в кампусе РГПУ им. А.И. Герцена.</p>
+                <a href="mailto:terraherz-spb@yandex.ru" class="btn" style="margin-top: 20px;"><i class="fas fa-envelope"></i> Отправить заявку</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Оргкомитет и жюри</h2>
+            <p>В состав жюри входят представители РГПУ им. А.И. Герцена, Комитета по природопользованию, ведущие эксперты в области экологии, урбанистики и «зелёных» технологий. Оценка работ проводится на основе открытости, экспертизы и соответствия целям фестиваля.</p>
+            <div class="badge-list" style="margin-top: 20px;">
+                <span class="badge"><i class="fas fa-building"></i> РГПУ им. Герцена</span>
+                <span class="badge"><i class="fas fa-leaf"></i> Комитет по благоустройству</span>
+                <span class="badge"><i class="fas fa-chart-simple"></i> Эксперты-урбанисты</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Зелёный Пеликан</h4>
+                    <p>Фестиваль экологической культуры<br>26–27 мая 2026, Санкт-Петербург</p>
+                </div>
+                <div class="footer-col">
+                    <h4>По вопросам конкурса</h4>
+                    <p><i class="fas fa-envelope"></i> terraherz-spb@yandex.ru</p>
+                    <p><i class="fas fa-globe"></i> greenpelican.herzen.spb.ru/contest</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Социальные сети</h4>
+                    <p>Открытый кампус Герценовского университета</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Конкурс «Зелёный город» в рамках фестиваля «Зелёный Пеликан»
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
